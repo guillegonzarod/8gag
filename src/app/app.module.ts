@@ -8,6 +8,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage, SubirPage } from '../pages/index.pages';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyByzgqM2D_kWnIcgneaW2wJTQdfqqX2B6M",
+  authDomain: "gag-e01c5.firebaseapp.com",
+  databaseURL: "https://gag-e01c5.firebaseio.com",
+  projectId: "gag-e01c5",
+  storageBucket: "gag-e01c5.appspot.com",
+  messagingSenderId: "142772827209"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -16,7 +30,10 @@ import { HomePage, SubirPage } from '../pages/index.pages';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -27,7 +44,8 @@ import { HomePage, SubirPage } from '../pages/index.pages';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFireDatabase,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
