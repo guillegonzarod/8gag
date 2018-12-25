@@ -15,6 +15,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // Pipes
 import { PipesModule } from './../pipes/pipes.module';
 
+// Plugins
+import { Camera, CameraOptions } from '@ionic-native/camera';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyByzgqM2D_kWnIcgneaW2wJTQdfqqX2B6M",
   authDomain: "gag-e01c5.firebaseapp.com",
@@ -48,7 +51,9 @@ export const firebaseConfig = {
     StatusBar,
     SplashScreen,
     AngularFireDatabase,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    Camera,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+
   ]
 })
 export class AppModule { }
