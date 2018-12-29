@@ -19,6 +19,9 @@ import { PipesModule } from './../pipes/pipes.module';
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
 
+// Servicios
+import { CargaArchivoProvider } from '../providers/carga-archivo/carga-archivo';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyByzgqM2D_kWnIcgneaW2wJTQdfqqX2B6M",
   authDomain: "gag-e01c5.firebaseapp.com",
@@ -55,6 +58,7 @@ export const firebaseConfig = {
     Camera,
     ImagePicker,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    CargaArchivoProvider,
 
   ]
 })
