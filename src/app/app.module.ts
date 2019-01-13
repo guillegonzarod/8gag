@@ -23,12 +23,12 @@ import { ImagePicker } from '@ionic-native/image-picker';
 import { CargaArchivoProvider } from '../providers/carga-archivo/carga-archivo';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyByzgqM2D_kWnIcgneaW2wJTQdfqqX2B6M",
-  authDomain: "gag-e01c5.firebaseapp.com",
-  databaseURL: "https://gag-e01c5.firebaseio.com",
-  projectId: "gag-e01c5",
-  storageBucket: "gag-e01c5.appspot.com",
-  messagingSenderId: "142772827209"
+  apiKey: "AIzaSyD08dTkWfl1SuICEZ_jZAnHr2U_q3YvQYA",
+  authDomain: "gag-5e57b.firebaseapp.com",
+  databaseURL: "https://gag-5e57b.firebaseio.com",
+  projectId: "gag-5e57b",
+  storageBucket: "gag-5e57b.appspot.com",
+  messagingSenderId: "1017952461325"
 };
 
 @NgModule({

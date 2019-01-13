@@ -14,9 +14,9 @@ import { CargaArchivoProvider } from './../../providers/carga-archivo/carga-arch
 })
 export class SubirPage {
 
-  titulo: string;
+  titulo: string = "";
 
-  imagenPreview: string;
+  imagenPreview: string = "";
   imagen64: string;
 
   constructor(private viewCtrl: ViewController, private camera: Camera, private imagePicker: ImagePicker,
@@ -45,7 +45,6 @@ export class SubirPage {
   subir_foto() {
 
     console.log(`Botón 'Seleccionar' pulsado!!!`);
-
     let opciones: ImagePickerOptions = {
       quality: 70,
       outputType: 1,
@@ -54,7 +53,7 @@ export class SubirPage {
 
     this.imagePicker.getPictures(opciones).then((results) => {
       for (var i = 0; i < results.length; i++) {
-        console.log('Image URI: ' + results[i]);
+        // console.log('Image URI: ' + results[i]);
         this.imagenPreview = 'data:image/jpg;base64,' + results[i];
         this.imagen64 = results[i];
       }
@@ -70,6 +69,9 @@ export class SubirPage {
       titulo: this.titulo
     }
 
-    this._cap.cargar_imagen_firebase(archivo);
+    this._cap.cargar_imagen_firebase(archivo).then(() => {
+      this.cerrar_modal();
+    });
+
   }
 }
