@@ -16,19 +16,26 @@ import { SubirPage } from '../index.pages';
 export class HomePage {
 
   // posts: Observable<any[]>;
+  hayMas: boolean = true;
 
-constructor(
-  private modalCtrl: ModalController,
-  public _cap: CargaArchivoProvider
+  constructor(
+    private modalCtrl: ModalController,
+    public _cap: CargaArchivoProvider
   ) {
-  // this.posts = afDB.list('post').valueChanges();
-  
-
-}
+    // this.posts = afDB.list('post').valueChanges();
+  }
 
   mostrar_modal() {
     let modal = this.modalCtrl.create(SubirPage);
     modal.present();
   }
 
+  doInfinite(infiniteScroll) {
+    console.log('Begin async operation');
+    
+    this._cap.cargar_imagenes().then((hayMas: boolean) => {
+      this.hayMas = hayMas;
+      infiniteScroll.complete();
+    });
+  }
 }

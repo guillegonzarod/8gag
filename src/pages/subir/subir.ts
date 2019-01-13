@@ -73,5 +73,7 @@ export class SubirPage {
       this.cerrar_modal();
     });
 
+
+
   }
 }
