@@ -1,11 +1,13 @@
+import { CargaArchivoProvider } from './../../providers/carga-archivo/carga-archivo';
 
 import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { SubirPage } from '../index.pages';
 
 // Firebase
-import { AngularFireDatabase } from '@angular/fire/database';
-import { Observable } from 'rxjs/Observable';
+// import { AngularFireDatabase } from '@angular/fire/database';
+
+// import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'page-home',
@@ -13,10 +15,15 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomePage {
 
-  posts: Observable<any[]>;
+  // posts: Observable<any[]>;
 
-constructor(private modalCtrl: ModalController, private afDB: AngularFireDatabase) {
-  this.posts = afDB.list('post').valueChanges();
+constructor(
+  private modalCtrl: ModalController,
+  public _cap: CargaArchivoProvider
+  ) {
+  // this.posts = afDB.list('post').valueChanges();
+  
+
 }
 
   mostrar_modal() {
