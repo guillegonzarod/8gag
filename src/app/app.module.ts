@@ -18,6 +18,7 @@ import { PipesModule } from './../pipes/pipes.module';
 // Plugins
 import { Camera } from '@ionic-native/camera';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 // Servicios
 import { CargaArchivoProvider } from '../providers/carga-archivo/carga-archivo';
@@ -59,7 +60,7 @@ export const firebaseConfig = {
     ImagePicker,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     CargaArchivoProvider,
-
+    SocialSharing
   ]
 })
 export class AppModule { }

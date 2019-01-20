@@ -1,5 +1,5 @@
 import { CargaArchivoProvider } from './../../providers/carga-archivo/carga-archivo';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 import { Component } from '@angular/core';
 import { ModalController } from 'ionic-angular';
 import { SubirPage } from '../index.pages';
@@ -20,7 +20,8 @@ export class HomePage {
 
   constructor(
     private modalCtrl: ModalController,
-    public _cap: CargaArchivoProvider
+    public _cap: CargaArchivoProvider,
+    private socialSharing: SocialSharing
   ) {
     // this.posts = afDB.list('post').valueChanges();
   }
@@ -32,10 +33,21 @@ export class HomePage {
 
   doInfinite(infiniteScroll) {
     console.log('Begin async operation');
-    
+
     this._cap.cargar_imagenes().then((hayMas: boolean) => {
       this.hayMas = hayMas;
       infiniteScroll.complete();
     });
+  }
+
+  compartir(post: any) {
+    console.log(`Entra en compartir(): ${post.titulo}`);
+    this.socialSharing.shareViaFacebook(post.titulo, post.imagen, post.img)
+      .then((datos) => {
+        console.log(`Error: ${datos}`);
+      }) // Se pudo compartir
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      }); // Sucedió un error
   }
 }

@@ -21,9 +21,9 @@ export class CargaArchivoProvider {
     public afDB: AngularFireDatabase
   ) {
     this.cargar_ultimo_key()
-    .subscribe(()=>{
-      this.cargar_imagenes();
-    });
+      .subscribe(() => {
+        this.cargar_imagenes();
+      });
   }
 
   private cargar_ultimo_key() {
@@ -45,7 +45,14 @@ export class CargaArchivoProvider {
       ).valueChanges()
         .subscribe((posts: any) => {
 
+          console.log(`1. ${this.lastKey}`);
+          posts.forEach((p, i) => {
+            console.log(`2. ${i}: ${p.key}`);
+          });
           posts.pop();
+          posts.forEach((p, i) => {
+            console.log(`3. ${i}: ${p.key}`);
+          });
 
           if (posts.length == 0) {
             console.log('Ya no hay más registros');
@@ -54,9 +61,11 @@ export class CargaArchivoProvider {
           }
 
           this.lastKey = posts[0].key;
+          console.log(`4. ${this.lastKey}`);
 
           for (let i = posts.length - 1; i >= 0; i--) {
             let post = posts[i];
+            console.log(`5. ${post.key}`);
             this.imagenes.push(post);
           }
 
